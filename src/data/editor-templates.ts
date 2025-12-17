@@ -8,8 +8,8 @@ export type EditorTemplate = {
 };
 
 export const DEFAULT_CANVAS_SIZE = {
-  width: 900,
-  height: 1200,
+  width: 1920,
+  height: 1080,
 };
 
 export const editorTemplates: EditorTemplate[] = [

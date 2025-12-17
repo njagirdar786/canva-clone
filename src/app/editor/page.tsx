@@ -1,3 +1,5 @@
+"use client"
+
 import { Editor } from "@/features/editor/components/editor";
 import { DEFAULT_CANVAS_SIZE } from "@/data/editor-templates";
 

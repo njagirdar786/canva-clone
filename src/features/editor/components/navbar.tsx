@@ -11,7 +11,6 @@ import {
 } from "lucide-react";
 
 import { ActiveTool, Editor } from "@/features/editor/types";
-import { Logo } from "@/features/editor/components/logo";
 
 import { cn } from "@/lib/utils";
 import { Hint } from "@/components/hint";
@@ -50,8 +49,7 @@ export const Navbar = ({
   });
 
   return (
-    <nav className="w-full flex items-center p-4 h-[68px] gap-x-8 border-b lg:pl-[34px]">
-      <Logo />
+    <nav className="w-full flex items-center p-4 h-[68px] gap-x-8 rounded-md border bg-card shadow-sm lg:pl-[34px]">
       <div className="w-full flex items-center gap-x-1 h-full">
         <DropdownMenu modal={false}>
           <DropdownMenuTrigger asChild>
@@ -81,7 +79,7 @@ export const Navbar = ({
             variant="ghost"
             size="icon"
             onClick={() => onChangeActiveTool("select")}
-            className={cn(activeTool === "select" && "bg-gray-100")}
+            className={cn(activeTool === "select" && "bg-muted")}
           >
             <MousePointerClick className="size-4" />
           </Button>
@@ -149,18 +147,6 @@ export const Navbar = ({
                   <p>JPG</p>
                   <p className="text-xs text-muted-foreground">
                     Best for printing
-                  </p>
-                </div>
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                className="flex items-center gap-x-2"
-                onClick={() => editor?.saveSvg()}
-              >
-                <CiFileOn className="size-8" />
-                <div>
-                  <p>SVG</p>
-                  <p className="text-xs text-muted-foreground">
-                    Best for editing in vector software
                   </p>
                 </div>
               </DropdownMenuItem>

@@ -29,13 +29,12 @@ export const Hint = ({
           {children}
         </TooltipTrigger>
         <TooltipContent
-          className="text-white bg-slate-800 border-slate-800"
           side={side}
           align={align}
           sideOffset={sideOffset}
           alignOffset={alignOffset}
         >
-          <p className="font-semibold capitalize">
+          <p className="text-xs font-medium capitalize">
             {label}
           </p>
         </TooltipContent>

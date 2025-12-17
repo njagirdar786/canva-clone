@@ -66,7 +66,7 @@ export const SettingsSidebar = ({
   return (
     <aside
       className={cn(
-        "bg-white relative border-r z-[40] w-[360px] h-full flex flex-col",
+        "bg-card relative z-[40] w-[360px] h-full flex flex-col rounded-md border shadow-sm",
         activeTool === "settings" ? "visible" : "hidden",
       )}
     >
@@ -76,17 +76,7 @@ export const SettingsSidebar = ({
       />
       <ScrollArea>
         <form className="space-y-4 p-4" onSubmit={onSubmit}>
-          <div className="space-y-2">
-            <Label>
-              Height
-            </Label>
-            <Input
-              placeholder="Height"
-              value={height}
-              type="number"
-              onChange={(e) => changeHeight(e.target.value)}
-            />
-          </div>
+        
           <div className="space-y-2">
             <Label>
               Width
@@ -96,6 +86,17 @@ export const SettingsSidebar = ({
               value={width}
               type="number"
               onChange={(e) => changeWidth(e.target.value)}
+            />
+          </div>
+            <div className="space-y-2">
+            <Label>
+              Height
+            </Label>
+            <Input
+              placeholder="Height"
+              value={height}
+              type="number"
+              onChange={(e) => changeHeight(e.target.value)}
             />
           </div>
           <Button type="submit" className="w-full">

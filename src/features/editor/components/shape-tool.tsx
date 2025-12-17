@@ -2,6 +2,7 @@ import type { IconType } from "react-icons";
 import type { LucideIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 interface ShapeToolProps {
   onClick: () => void;
@@ -15,11 +16,13 @@ export const ShapeTool = ({
   iconClassName
 }: ShapeToolProps) => {
   return (
-    <button
+    <Button
+      type="button"
+      variant="outline"
       onClick={onClick}
-      className="aspect-square border rounded-md p-5"
+      className="aspect-square h-20 w-full p-5"
     >
       <Icon className={cn("h-full w-full", iconClassName)} />
-    </button>
+    </Button>
   );
 };

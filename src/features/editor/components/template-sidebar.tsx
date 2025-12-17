@@ -11,6 +11,7 @@ import { ToolSidebarHeader } from "@/features/editor/components/tool-sidebar-hea
 
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "@/components/ui/button";
 import { useConfirm } from "@/hooks/use-confirm";
 import { EditorTemplate, editorTemplates } from "@/data/editor-templates";
 
@@ -66,7 +67,7 @@ export const TemplateSidebar = ({
   return (
     <aside
       className={cn(
-        "bg-white relative border-r z-[40] w-[360px] h-full flex flex-col",
+        "bg-card relative z-[40] w-[360px] h-full flex flex-col rounded-md border shadow-sm",
         activeTool === "templates" ? "visible" : "hidden",
       )}
     >
@@ -87,14 +88,19 @@ export const TemplateSidebar = ({
               const isLoading = loadingTemplateId === template.id;
 
               return (
-                <button
+                <Button
+                  type="button"
+                  variant="outline"
                   style={{ 
                     aspectRatio: `${template.width}/${template.height}`
                   }}
                   onClick={() => loadTemplate(template)}
                   key={template.id}
                   disabled={isLoading}
-                  className="relative w-full group hover:opacity-75 transition bg-muted rounded-sm overflow-hidden border disabled:opacity-60"
+                  className={cn(
+                    "group relative block w-full h-auto overflow-hidden rounded-md border bg-card p-0 px-0 py-0 shadow-sm transition hover:opacity-90",
+                    isLoading && "opacity-60"
+                  )}
                 >
                   <Image
                     fill
@@ -112,7 +118,7 @@ export const TemplateSidebar = ({
                   >
                     {template.name}
                   </div>
-                </button>
+                </Button>
               )
             })}
           </div>

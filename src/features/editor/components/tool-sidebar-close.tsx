@@ -1,5 +1,7 @@
 import { ChevronsLeft } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+
 interface ToolSidebarCloseProps {
   onClick: () => void;
 };
@@ -8,11 +10,14 @@ export const ToolSidebarClose = ({
   onClick,
 }: ToolSidebarCloseProps) => {
   return (
-    <button
+    <Button
+      type="button"
+      variant="outline"
+      size="icon"
       onClick={onClick}
-      className="absolute -right-[1.80rem] h-[70px] bg-white top-1/2 transform -translate-y-1/2 flex items-center justify-center rounded-r-xl px-1 pr-2 border-r border-y group"
+      className="absolute -right-4 top-1/2 h-9 w-9 -translate-y-1/2 rounded-full bg-card shadow-sm"
     >
-      <ChevronsLeft className="size-4 text-black group-hover:opacity-75 transition" />
-    </button>
+      <ChevronsLeft className="size-4" />
+    </Button>
   );
 };

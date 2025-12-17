@@ -1,6 +1,11 @@
 import { uuid } from "uuidv4";
 import { fabric } from "fabric";
-import type { RGBColor } from "react-color";
+export type RgbaColor = {
+  r: number;
+  g: number;
+  b: number;
+  a?: number;
+};
 
 export function transformText(objects: any) {
   if (!objects) return;
@@ -28,7 +33,7 @@ export function isTextType(type: string | undefined) {
   return type === "text" || type === "i-text" || type === "textbox";
 };
 
-export function rgbaObjectToString(rgba: RGBColor | "transparent") {
+export function rgbaObjectToString(rgba: RgbaColor | "transparent") {
   if (rgba === "transparent") {
     return `rgba(0,0,0,0)`;
   }

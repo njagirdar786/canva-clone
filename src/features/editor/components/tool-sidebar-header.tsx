@@ -1,3 +1,5 @@
+import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+
 interface ToolSidebarHeaderProps {
   title: string;
   description?: string;
@@ -8,15 +10,15 @@ export const ToolSidebarHeader = ({
   description
 }: ToolSidebarHeaderProps) => {
   return (
-    <div className="p-4 border-b space-y-1 h-[68px]">
-      <p className="text-sm font-medium">
+    <CardHeader className="p-4 border-b space-y-1 h-[68px]">
+      <CardTitle className="text-sm font-medium">
         {title}
-      </p>
+      </CardTitle>
       {description && (
-        <p className="text-xs text-muted-foreground">
+        <CardDescription className="text-xs">
           {description}
-        </p>
+        </CardDescription>
       )}
-    </div>
+    </CardHeader>
   );
 };
