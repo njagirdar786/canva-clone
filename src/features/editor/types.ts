@@ -65,7 +65,6 @@ export const selectionDependentTools = [
   "font",
   "filter",
   "opacity",
-  "remove-bg",
   "stroke-color",
   "stroke-width",
 ];
@@ -105,8 +104,6 @@ export type ActiveTool =
   | "opacity"
   | "filter"
   | "settings"
-  | "ai"
-  | "remove-bg"
   | "templates";
 
 export const FILL_COLOR = "rgba(0,0,0,1)";
