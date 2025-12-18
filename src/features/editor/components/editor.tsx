@@ -24,6 +24,8 @@ import { FilterSidebar } from "@/features/editor/components/filter-sidebar";
 import { DrawSidebar } from "@/features/editor/components/draw-sidebar";
 import { TemplateSidebar } from "@/features/editor/components/template-sidebar";
 import { SettingsSidebar } from "@/features/editor/components/settings-sidebar";
+import { Rulers } from "@/features/editor/components/rulers";
+import { useGuidelines } from "@/features/editor/hooks/use-guidelines";
 
 interface EditorInitialData {
   json?: string;
@@ -37,6 +39,7 @@ interface EditorProps {
 
 export const Editor = ({ initialData }: EditorProps) => {
   const [activeTool, setActiveTool] = useState<ActiveTool>("text");
+  const [showRulers, setShowRulers] = useState(false);
 
   const onClearSelection = useCallback(() => {
     if (selectionDependentTools.includes(activeTool)) {
@@ -70,6 +73,11 @@ export const Editor = ({ initialData }: EditorProps) => {
   const canvasRef = useRef(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  useGuidelines({
+    canvas: editor?.canvas ?? null,
+    enabled: showRulers,
+  });
+
   useEffect(() => {
     const canvas = new fabric.Canvas(canvasRef.current, {
       controlsAboveOverlay: true,
@@ -93,6 +101,8 @@ export const Editor = ({ initialData }: EditorProps) => {
           editor={editor}
           activeTool={activeTool}
           onChangeActiveTool={onChangeActiveTool}
+          showRulers={showRulers}
+          onToggleRulers={() => setShowRulers((v) => !v)}
         />
         <div className="flex flex-1 gap-2 overflow-hidden min-h-0">
           <Sidebar
@@ -158,6 +168,8 @@ export const Editor = ({ initialData }: EditorProps) => {
             editor={editor}
             activeTool={activeTool}
             onChangeActiveTool={onChangeActiveTool}
+            showRulers={showRulers}
+            onToggleRulers={() => setShowRulers((v) => !v)}
           />
           <main className="flex flex-1 flex-col gap-4 overflow-hidden min-h-0">
             <Toolbar
@@ -167,8 +179,22 @@ export const Editor = ({ initialData }: EditorProps) => {
               key={JSON.stringify(editor?.canvas.getActiveObject())}
             />
             <div className="flex-1 min-h-0 overflow-hidden ">
-              <div className="h-full w-full" ref={containerRef}>
-                <canvas ref={canvasRef} />
+              <div
+                className="h-full w-full grid grid-cols-[var(--ruler-size),1fr] grid-rows-[var(--ruler-size),1fr]"
+                style={{ "--ruler-size": showRulers ? "24px" : "0px" } as React.CSSProperties}
+              >
+                <div
+                  className="col-start-1 row-start-1 bg-card border-b border-r border-border"
+                  style={{ visibility: showRulers ? "visible" : "hidden" }}
+                />
+                <Rulers
+                  canvas={editor?.canvas ?? null}
+                  containerRef={containerRef}
+                  thickness={showRulers ? 24 : 0}
+                />
+                <div className="col-start-2 row-start-2 h-full w-full relative" ref={containerRef}>
+                  <canvas ref={canvasRef} />
+                </div>
               </div>
             </div>
             <div className="flex justify-end">

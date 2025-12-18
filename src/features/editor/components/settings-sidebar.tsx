@@ -15,12 +15,16 @@ interface SettingsSidebarProps {
   editor: Editor | undefined;
   activeTool: ActiveTool;
   onChangeActiveTool: (tool: ActiveTool) => void;
+  showRulers: boolean;
+  onToggleRulers: () => void;
 };
 
 export const SettingsSidebar = ({
   editor,
   activeTool,
   onChangeActiveTool,
+  showRulers,
+  onToggleRulers,
 }: SettingsSidebarProps) => {
   const workspace = editor?.getWorkspace();
 
@@ -102,6 +106,23 @@ export const SettingsSidebar = ({
           <Button type="submit" className="w-full">
             Resize
           </Button>
+
+          <div className="space-y-2 pt-2">
+            <Label>
+              View
+            </Label>
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full justify-between"
+              onClick={onToggleRulers}
+            >
+              Rulers
+              <span className="text-muted-foreground text-xs">
+                {showRulers ? "On" : "Off"}
+              </span>
+            </Button>
+          </div>
         </form>
         <div className="p-4">
           <ColorPicker

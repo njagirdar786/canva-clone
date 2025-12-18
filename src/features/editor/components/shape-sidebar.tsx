@@ -1,6 +1,4 @@
-import { IoTriangle } from "react-icons/io5";
-import { FaDiamond } from "react-icons/fa6";
-import { FaCircle, FaSquare, FaSquareFull } from "react-icons/fa";
+import { Circle, Diamond, Square, SquareDashedBottom, Triangle } from "lucide-react";
 
 import { ActiveTool, Editor } from "@/features/editor/types";
 import { ShapeTool } from "@/features/editor/components/shape-tool";
@@ -40,28 +38,28 @@ export const ShapeSidebar = ({
         <div className="grid grid-cols-3 gap-4 p-4">
           <ShapeTool
             onClick={() => editor?.addCircle()}
-            icon={FaCircle}
+            icon={Circle}
           />
           <ShapeTool
             onClick={() => editor?.addSoftRectangle()}
-            icon={FaSquare}
+            icon={SquareDashedBottom}
           />
           <ShapeTool
             onClick={() => editor?.addRectangle()}
-            icon={FaSquareFull}
+            icon={Square}
           />
           <ShapeTool
             onClick={() => editor?.addTriangle()}
-            icon={IoTriangle}
+            icon={Triangle}
           />
           <ShapeTool
             onClick={() => editor?.addInverseTriangle()}
-            icon={IoTriangle}
+            icon={Triangle}
             iconClassName="rotate-180"
           />
           <ShapeTool
             onClick={() => editor?.addDiamond()}
-            icon={FaDiamond}
+            icon={Diamond}
           />
         </div>
       </ScrollArea>

@@ -1,21 +1,19 @@
 import { useState } from "react";
 
 import { 
-  FaBold, 
-  FaItalic, 
-  FaStrikethrough, 
-  FaUnderline
-} from "react-icons/fa";
-import { TbColorFilter } from "react-icons/tb";
-import { BsBorderWidth } from "react-icons/bs";
-import { RxTransparencyGrid } from "react-icons/rx";
-import { 
+  Bold,
+  Filter,
   ArrowUp, 
   ArrowDown, 
   ChevronDown, 
   AlignLeft, 
   AlignCenter, 
   AlignRight,
+  Grid2X2,
+  Italic,
+  SeparatorHorizontal,
+  Strikethrough,
+  Underline,
   Trash,
   Copy
 } from "lucide-react";
@@ -210,7 +208,7 @@ export const Toolbar = ({
                 activeTool === "stroke-width" && "bg-muted"
               )}
             >
-              <BsBorderWidth className="size-4" />
+              <SeparatorHorizontal className="size-4" />
             </Button>
           </Hint>
         </div>
@@ -246,7 +244,7 @@ export const Toolbar = ({
                 properties.fontWeight > 500 && "bg-muted"
               )}
             >
-              <FaBold className="size-4" />
+              <Bold className="size-4" />
             </Button>
           </Hint>
         </div>
@@ -262,7 +260,7 @@ export const Toolbar = ({
                 properties.fontStyle === "italic" && "bg-muted"
               )}
             >
-              <FaItalic className="size-4" />
+              <Italic className="size-4" />
             </Button>
           </Hint>
         </div>
@@ -278,7 +276,7 @@ export const Toolbar = ({
                 properties.fontUnderline && "bg-muted"
               )}
             >
-              <FaUnderline className="size-4" />
+              <Underline className="size-4" />
             </Button>
           </Hint>
         </div>
@@ -294,7 +292,7 @@ export const Toolbar = ({
                 properties.fontLinethrough && "bg-muted"
               )}
             >
-              <FaStrikethrough className="size-4" />
+              <Strikethrough className="size-4" />
             </Button>
           </Hint>
         </div>
@@ -366,7 +364,7 @@ export const Toolbar = ({
                 activeTool === "filter" && "bg-muted"
               )}
             >
-              <TbColorFilter className="size-4" />
+              <Filter className="size-4" />
             </Button>
           </Hint>
         </div>
@@ -401,7 +399,7 @@ export const Toolbar = ({
             variant="ghost"
             className={cn(activeTool === "opacity" && "bg-muted")}
           >
-            <RxTransparencyGrid className="size-4" />
+            <Grid2X2 className="size-4" />
           </Button>
         </Hint>
       </div>

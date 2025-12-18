@@ -1,12 +1,13 @@
 "use client";
 
-import { CiFileOn } from "react-icons/ci";
 import { useFilePicker } from "use-file-picker";
 import { 
   ChevronDown, 
   Download, 
+  File,
   MousePointerClick, 
   Redo2, 
+  Ruler,
   Undo2
 } from "lucide-react";
 
@@ -27,12 +28,16 @@ interface NavbarProps {
   editor: Editor | undefined;
   activeTool: ActiveTool;
   onChangeActiveTool: (tool: ActiveTool) => void;
+  showRulers: boolean;
+  onToggleRulers: () => void;
 };
 
 export const Navbar = ({
   editor,
   activeTool,
   onChangeActiveTool,
+  showRulers,
+  onToggleRulers,
 }: NavbarProps) => {
   const { openFilePicker } = useFilePicker({
     accept: ".json",
@@ -63,7 +68,7 @@ export const Navbar = ({
               onClick={() => openFilePicker()}
               className="flex items-center gap-x-2"
             >
-              <CiFileOn className="size-8" />
+              <File className="size-8" />
               <div>
                 <p>Open</p>
                 <p className="text-xs text-muted-foreground">
@@ -105,6 +110,17 @@ export const Navbar = ({
           </Button>
         </Hint>
         <Separator orientation="vertical" className="mx-2" />
+        <Hint label={showRulers ? "Hide rulers" : "Show rulers"} side="bottom" sideOffset={10}>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onToggleRulers}
+            className={cn(showRulers && "bg-muted")}
+          >
+            <Ruler className="size-4" />
+          </Button>
+        </Hint>
+        <Separator orientation="vertical" className="mx-2" />
         <div className="ml-auto flex items-center gap-x-4">
           <DropdownMenu modal={false}>
             <DropdownMenuTrigger asChild>
@@ -118,7 +134,7 @@ export const Navbar = ({
                 className="flex items-center gap-x-2"
                 onClick={() => editor?.saveJson()}
               >
-                <CiFileOn className="size-8" />
+                <File className="size-8" />
                 <div>
                   <p>JSON</p>
                   <p className="text-xs text-muted-foreground">
@@ -130,7 +146,7 @@ export const Navbar = ({
                 className="flex items-center gap-x-2"
                 onClick={() => editor?.savePng()}
               >
-                <CiFileOn className="size-8" />
+                <File className="size-8" />
                 <div>
                   <p>PNG</p>
                   <p className="text-xs text-muted-foreground">
@@ -142,7 +158,7 @@ export const Navbar = ({
                 className="flex items-center gap-x-2"
                 onClick={() => editor?.saveJpg()}
               >
-                <CiFileOn className="size-8" />
+                <File className="size-8" />
                 <div>
                   <p>JPG</p>
                   <p className="text-xs text-muted-foreground">
